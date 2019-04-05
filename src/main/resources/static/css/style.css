@@ -1,0 +1,236 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+body {
+    background-size: cover;
+}
+
+#head {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative;
+    border-radius: 6px;
+}
+
+.resultat {
+    height: 250px;
+    width: 520px;
+}
+
+.titre {
+    color: #505050;
+    text-align: left;
+    display: inline-block;
+}
+
+.titre-1 {
+    color: #505050;
+    text-align: left;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.contenu {
+    position: relative;
+    background: #fafafa;
+    margin-bottom: 30px;
+    border: 1px solid #dbdbdc;
+}
+
+.contenu-resultat {
+    position: relative;
+    background: #ffffff;
+    margin-bottom: 30px;
+    border: 1px solid #dbdbdc;
+}
+
+.contenu-resultat-split-1 {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #28dc23;
+    margin-bottom: 10px;
+
+}
+
+.contenu-resultat-split-2 {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #ff3226;
+}
+
+.my-container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto
+}
+
+fieldset {
+    border: 1px solid #ddd !important;
+    margin: 0;
+    padding: 25px;
+    position: relative;
+    border-radius: 6px;
+    background-color: #ffffff;
+}
+
+#bottom-button {
+    padding-top: 1rem;
+    text-align: right;
+}
+
+#bottom-button button {
+    margin: 0.25rem;
+}
+
+.panel-default li {
+    margin: 0 0 5px 0;
+}
+
+.btn {
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 255, .2);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-family: sans-serif;
+    color: #c6ccd2;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+    font-family: sans-serif;
+    color: #c6ccd2;
+}
+
+:-ms-input-placeholder { /* IE 10+ */
+    font-family: sans-serif;
+    color: #c6ccd2;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    font-family: sans-serif;
+    color: #c6ccd2;
+}
+
+.erreur {
+    color: red;
+}
+
+.boxed {
+    height: 30px;
+    width: 400px;
+    border: 1px solid #83baff;
+    color: #ff6130;
+}
+
+/** Bootstrap 3.3.7 **/
+
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+a.label:hover,
+a.label:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.label:empty {
+    display: none;
+}
+
+.btn .label {
+    position: relative;
+    top: -1px;
+}
+
+.label-default {
+    background-color: #777;
+}
+
+.label-default[href]:hover,
+.label-default[href]:focus {
+    background-color: #5e5e5e;
+}
+
+.label-primary {
+    background-color: #337ab7;
+}
+
+.label-primary[href]:hover,
+.label-primary[href]:focus {
+    background-color: #286090;
+}
+
+.label-success {
+    background-color: #5cb85c;
+}
+
+.label-success[href]:hover,
+.label-success[href]:focus {
+    background-color: #449d44;
+}
+
+.label-info {
+    background-color: #5bc0de;
+}
+
+.label-info[href]:hover,
+.label-info[href]:focus {
+    background-color: #31b0d5;
+}
+
+.label-warning {
+    background-color: #f0ad4e;
+}
+
+.label-warning[href]:hover,
+.label-warning[href]:focus {
+    background-color: #ec971f;
+}
+
+.label-danger {
+    background-color: #d9534f;
+}
+
+.label-danger[href]:hover,
+.label-danger[href]:focus {
+    background-color: #c9302c;
+}
+
+/*********************/
+
+table th {
+    font-weight: normal;
+}
+
+.btn-blue {
+    padding: 0.3rem 0.6rem;
+    color: #fff;
+    background-color: #008bac;
+    border-color: #008bac
+}
+
+.btn-blue:hover, .btn-blue:focus, .btn-blue:active, .btn-blue.active, .open .dropdown-toggle .btn-blue {
+    color: #fff;
+    background-color: #0097bb;
+    border-color: #008bac;
+}

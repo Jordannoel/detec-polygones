@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Détection de polygones</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-4-1-3.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
+</head>
+<body>
+
+<div id="head">
+    <div class="titre">
+        <h1>Détection d'un polygone</h1>
+    </div>
+</div>
+
+<div class="contenu container rounded text-center font-weight-normal p-4">
+    <br>
+    <form method="post" autocomplete="off">
+        <div class="row">
+            <div class="col-4 text-right pt-2">
+                <label for="inputCotes"> Nombre de côtés :</label>
+            </div>
+            <div class="col-8">
+                <select name="nbCotes" id="inputCotes" class="form-control">
+                    <option value="0">Sélectionner</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-4 text-right pt-2">
+                <label for="inputCotesMemeTaille">Nombre de côtés de même taille :</label>
+            </div>
+            <div class="col-8">
+                <input type="text" id="inputCotesMemeTaille" name="nbCotesMemeTaille" class="form-control" maxlength=1
+                       pattern="[0-9]{1}"
+                       title="Chiffres uniquement.">
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-4 text-right pt-2">
+                <label for="inputAnglesDroit">Nombre d'angles droits :</label>
+            </div>
+            <div class="col-8">
+                <input type="text" id="inputAnglesDroit" name="nbAnglesDroits" class="form-control" maxlength=1
+                       pattern="[0-9]{1}"
+                       title="Chiffres uniquement.">
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-4 text-right pt-2">
+                <label for="inputCotesParalleles">Nombre de côtés parallèles :</label>
+            </div>
+            <div class="col-8">
+                <input type="text" id="inputCotesParalleles" name="nbCotesParalleles" class="form-control" maxlength=1
+                       pattern="[0-9]{1}"
+                       title="Chiffres uniquement.">
+            </div>
+        </div>
+
+        <div id="bottom-button">
+            <button type="submit" class="btn btn-success text-white mr-2">Valider</button>
+        </div>
+    </form>
+</div>
+
+<div class="contenu container rounded text-center font-weight-normal p-4" style="margin:auto; height: 350px;">
+
+    <div class="container text-center font-weight-normal p-4 float-left resultat">
+        <div class="titre-1">
+            <h4>Résultat</h4>
+        </div>
+        <div class="contenu-resultat container rounded text-center font-weight-normal p-4 float-left">
+            <div class="contenu-resultat-split-1 container rounded text-center font-weight-normal p-4 float-left">
+                aaa
+            </div>
+
+            <div class="contenu-resultat-split-2 container rounded text-center font-weight-normal p-4 float-left">
+                aaa
+            </div>
+        </div>
+    </div>
+
+    <div class="container text-center font-weight-normal p-4 float-right resultat">
+        <div class="titre-1">
+            <h4>Image</h4>
+        </div>
+        <div class="contenu-resultat container rounded text-center font-weight-normal p-4 float-right">
+            <img th:src="${image}" alt="image" style="max-width:160px;"/>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
