@@ -1,7 +1,9 @@
 package com.epsi.guez.detecpolygones.validator;
 
-import com.epsi.guez.detectionpolygones.exceptions.MyException;
+import com.epsi.guez.detecpolygones.exceptions.MyException;
+import org.springframework.stereotype.Component;
 
+@Component
 public class FormValidator {
 
     public void validate(String nbCotes, String nbCotesMemeTaille, String nbAnglesDroits, String nbCotesParalleles) throws MyException {
@@ -22,6 +24,37 @@ public class FormValidator {
         }
         if (nbCotesInt < nbCotesParallelesInt) {
             throw new MyException("Le nombre de côtés parallèles ne peut pas être supérieur au nombre de côtés.");
+        }
+        if (nbCotesMemeTailleInt == 1) {
+            throw new MyException("Une figure ne peut pas possèder un seul côté de même taille.");
+        }
+        if (nbCotesParallelesInt == 1) {
+            throw new MyException("Une figure ne peut pas possèder un seul côté parallèle.");
+        }
+        switch (nbCotesInt) {
+            case 3:
+                if (nbAnglesDroitsInt > 1) {
+                    throw new MyException("Un triangle ne peut pas avoir plus d'un angle droit.");
+                }
+                if (nbCotesParallelesInt > 0) {
+                    throw new MyException("Un triangle ne peut pas contenir deux côtés parallèles.");
+                }
+                break;
+            case 4:
+                if (nbAnglesDroitsInt == 3) {
+                    throw new MyException("Un quadrillatère ne peut pas avoir trois angles droits.");
+                }
+                if(nbAnglesDroitsInt == 2 && nbCotesMemeTailleInt == 3) {
+                    throw new MyException("Un quadrillatère ne peut pas posséder deux angles droits et trois côtés de même taille simultanément.");
+                }
+                break;
+            case 5:
+                if (nbAnglesDroitsInt == 4) {
+                    throw new MyException("Un pentagone ne peut pas avoir quatre angles droits.");
+                }
+                break;
+            default:
+                break;
         }
     }
 }

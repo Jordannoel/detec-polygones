@@ -76,27 +76,18 @@
 
 <div class="contenu container rounded text-center font-weight-normal p-4" style="margin:auto; height: 350px;">
 
-    <div class="container text-center font-weight-normal p-4 float-left resultat">
+    <div class="container text-center font-weight-normal p-4 resultat">
         <div class="titre-1">
             <h4>Résultat</h4>
         </div>
-        <div class="contenu-resultat container rounded text-center font-weight-normal p-4 float-left">
-            <div class="contenu-resultat-split-1 container rounded text-center font-weight-normal p-4 float-left">
-                aaa
+        <div class="contenu-resultat container rounded text-center font-weight-normal p-4">
+            <div class="contenu-resultat-split-1 container rounded text-center font-weight-normal p-4">
+                <span th:text="${polygone.getMessage()}"></span>
             </div>
 
-            <div class="contenu-resultat-split-2 container rounded text-center font-weight-normal p-4 float-left">
-                aaa
+            <div class="contenu-resultat-split-2 container rounded text-center font-weight-normal p-4">
+                <span th:text="${erreur}"></span>
             </div>
-        </div>
-    </div>
-
-    <div class="container text-center font-weight-normal p-4 float-right resultat">
-        <div class="titre-1">
-            <h4>Image</h4>
-        </div>
-        <div class="contenu-resultat container rounded text-center font-weight-normal p-4 float-right">
-            <img th:src="${image}" alt="image" style="max-width:160px;"/>
         </div>
     </div>
 </div>

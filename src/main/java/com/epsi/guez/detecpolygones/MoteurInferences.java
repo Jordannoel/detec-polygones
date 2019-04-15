@@ -1,9 +1,9 @@
 package com.epsi.guez.detecpolygones;
 
-import com.epsi.guez.detectionpolygones.base.Faits;
-import com.epsi.guez.detectionpolygones.base.Regles;
-import com.epsi.guez.detectionpolygones.model.Polygone;
-import com.epsi.guez.detectionpolygones.validator.FormValidator;
+import com.epsi.guez.detecpolygones.base.Faits;
+import com.epsi.guez.detecpolygones.base.Regles;
+import com.epsi.guez.detecpolygones.model.Polygone;
+import com.epsi.guez.detecpolygones.validator.FormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,23 +15,31 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class MoteurInferences {
 
+    private final static String REDIRECT = "redirect:";
+
     private Regles regles;
     private Faits faits;
     private FormValidator formValidator;
 
     @Autowired
-    public MoteurInferences(Regles regles, Faits faits) {
+    public MoteurInferences(Regles regles, Faits faits, FormValidator formValidator) {
         this.regles = regles;
         this.faits = faits;
+        this.formValidator = formValidator;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String afficherIndex(HttpServletRequest req, ModelMap model) {
-        model.addAttribute("image", "/img/tri-isocele.jpg");
+    public String redirectToIndex() {
+        return REDIRECT + "/index";
+    }
+
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String afficherIndex(ModelMap modelMap) {
+        modelMap.addAttribute("polygone", new Polygone());
         return "/index";
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = "/index", method = RequestMethod.POST)
     public String parseData(HttpServletRequest req, ModelMap model) {
         try {
             String nbCotes = req.getParameter("nbCotes");
@@ -46,18 +54,20 @@ public class MoteurInferences {
             int nbAnglesDroitsInt = Integer.parseInt(nbAnglesDroits);
             int nbCotesParallelesInt = Integer.parseInt(nbCotesParalleles);
 
-            regles.setPolygone(new Polygone(nbCotesInt, nbCotesMemeTailleInt, nbAnglesDroitsInt, nbCotesParallelesInt));
-
-            String message = regles.getResultat(nbCotesInt, nbCotesMemeTailleInt, nbAnglesDroitsInt, nbCotesParallelesInt);
-            model.addAttribute("message", message);
-            model.addAttribute("image", "/img/tri-isocele.jpg");
+            Polygone p = new Polygone(nbCotesInt, nbCotesMemeTailleInt, nbAnglesDroitsInt, nbCotesParallelesInt);
+            String description = faits.getFait(p);
+            if (!description.equals("")) {
+                p.setMessage(description);
+            } else {
+                regles.setPolygone(p);
+                p = regles.getTypePolygone();
+                faits.ajouterFait(p);
+            }
+            model.addAttribute("polygone", p);
         } catch (Exception e) {
+            model.addAttribute("polygone", new Polygone());
             model.addAttribute("erreur", e.getMessage());
         }
         return "/index";
-    }
-
-    private String getResultatFromReglesEtFaits() {
-        return "blablabla";
     }
 }
